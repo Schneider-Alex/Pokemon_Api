@@ -3,12 +3,11 @@ console.log("hello!")
 async function getPokemonData(){
     var response = await fetch("https://pokeapi.co/api/v2/pokemon/");
     var pokemonData = await response.json();
-    console.log(pokemonData)
-    randomNum=getRandomInt(20)
-    console.log(pokemonData.results[randomNum].url.sprites)
-    var pokemonName = document.getElementById("myPokemonName")
-    pokemonName.innerText=pokemonData.results[randomNum].name
-    // document.getElementById("myPokemonImg").src='{{url_for("static",filename="assets/sprites/sprites/pokemon/'randomNum'.jpeg")}}'
+    console.log(pokemonData);
+    var randomNum=getRandomInt(20);
+    document.getElementById("myPokemonName").innerText=pokemonData.results[randomNum].name;
+    var imgNum = randomNum+1
+    document.getElementById("myPokemonImg").src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
     return pokemonData
 }
 
