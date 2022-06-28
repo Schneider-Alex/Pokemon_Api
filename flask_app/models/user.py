@@ -20,3 +20,25 @@ class User:
         self.password = data ['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+    @staticmethod
+    def validate_user(form):
+        is_valid=True
+        query = """SELECT * FROM users WHERE email =  %(email)s"""
+        results = connectToMySQL('exercise').query_db(query, form)
+        if results:
+            flash("email address already in use!")
+            is_valid = False
+        elif not EMAIL_REGEX.match(form['email']): 
+            flash("Invalid email address!")
+            is_valid = False
+        if len(form['first_name']) < 2:
+            flash("First Name must be 3 Characters!")
+            is_valid = False
+        if len(form['last_name']) <  2:
+            flash("Last Name must be 3 Characters!")
+            is_valid = False
+        if form['passwordcheck'] != form['password']:
+            flash('passwords do not match!')
+            is_valid = False
+        return is_valid
