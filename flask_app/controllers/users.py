@@ -23,3 +23,8 @@ def login_user():
 @app.route('/search/pokemon')
 def search_page():
     return render_template("search.html")
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
