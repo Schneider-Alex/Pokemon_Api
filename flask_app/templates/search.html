@@ -12,12 +12,19 @@
 
 <body>
     <h1>Pokemon!</h1>
-    <button onclick="getPokemonData()">Get Pokemon!</button>
-    <img>
+    {%if session%}
+    <h2>Welcome {{session.first_name}}</h2>
+    {%endif%}
+    <h2></h2>
+    <div>
+        <button onclick="getPokemonData()">Get Pokemon!</button>
+        <img>
         <p id="myPokemonName"></p>
         <img id="myPokemonImg" src=""></img>
         <p id="next"></p>
-</div>
+    </div>
+    <a href='/'>Home</a>
+
 </body>
 
 </html>

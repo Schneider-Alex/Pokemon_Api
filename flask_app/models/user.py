@@ -1,3 +1,4 @@
+from inspect import _void
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, session
 import re
@@ -61,4 +62,31 @@ class User:
         user_id=connectToMySQL(cls.db).query_db(query,data)
         if user_id:
             return user_id
-        return "Nothing went through"
+        return print("Nothing went through")
+
+    @classmethod
+    def login_user(cls,data):
+        print('******* LOGIN USER RUNNING')
+        print(data)
+        user = User.get_user_by_email(data)
+        if user:
+            print("***************",user.password)
+            print("COMPARING", data['password'])
+            if bcrypt.check_password_hash(user.password, data['password']):
+                session['user_id'] = user.id
+                session['first_name'] = user.first_name
+                return session['user_id']
+        flash('Invalid', 'login')
+        return None
+
+    @classmethod
+    def get_user_by_email(cls, data):
+        query= '''
+        SELECT *
+        FROM users
+        WHERE email = %(email)s
+        ;'''
+        result =  connectToMySQL(cls.db).query_db(query, data)
+        if result:
+            result = cls(result[0])
+        return result

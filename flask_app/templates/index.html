@@ -19,6 +19,11 @@
         <Label for="passwordcheck">Confirm Password:<input type="password" name="passwordcheck" required></Label>
         <input type="submit"value="Create User">
     </form>
+    <form action="/login/user" method="post"> 
+        <Label for="email">Email adress:<input type="text" name="email" placeholder="emailed@e.com" required></Label>
+        <Label for="password">Password:<input type="password" name="password" placeholder="Password1?" required></Label>
+        <input type="submit" name="submit" class="btn btn1" />
+    </form>
     <h1>Pokemon!</h1>
     <button onclick="getPokemonData()">Get Pokemon!</button>
     <img>
