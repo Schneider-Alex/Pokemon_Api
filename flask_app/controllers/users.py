@@ -32,3 +32,7 @@ def logout():
 @app.route('/choice')
 def choice_page():
     return render_template('choice.html')
+
+@app.route('/pokedex')
+def  pokedex_page():
+    return  render_template('pokedex.html')
