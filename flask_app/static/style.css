@@ -8,16 +8,16 @@ h1{
     align-items: center;
 }
 .header_option_wrapper>h3{
-    color: white;
-    font-size: 10%;
-    transition: color 2s font-size 2s;
+    opacity:0;
+    transition: opacity 1s;
 
 }
 .header_option_wrapper:hover>h3{
     display: inline;
-    font-size: 150%;
-    color: black;
+    opacity:1;
 }
+
+
 
 .header_wrapper{
     display: flex;
@@ -26,9 +26,13 @@ h1{
 }
 .header_logo{
     background-color: white;
-    height:15vh;
+    height:18vh;
 }
 .header_option{
     background-color: white;
     width:8vh;
+    transition:width 1s;
+}
+.header_option_wrapper:hover>a>.header_option{
+    width:9vh;
 }
