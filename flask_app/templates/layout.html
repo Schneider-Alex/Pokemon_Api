@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
     <script defer type="text/javascript" src="{{ url_for('static', filename='script.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Layout</title>
 </head>
 
@@ -14,25 +17,31 @@
     <div class="header_wrapper">
         {%if session%}
         <div class="header_option_wrapper">
-            <h3>Check Pokedex</h3>
+            <!-- <h3 class="digital_font">Check</h3> -->
+            <h3 class="digital_font">Pokedex</h3>
             <a href="/pokedex">
                 <img class="header_option" src="{{ url_for('static', filename='assets/pokedex.png')}}">
             </a>
         </div>
         {%endif%}
-        <img class="header_logo" src="{{ url_for('static', filename='assets/pokemon_logo.png')}}" alt="Pokemon Logo">
+        <div class="header_center">
+            <img class="header_logo" src="{{ url_for('static', filename='assets/pokemon_logo.png')}}"
+                alt="Pokemon Logo">
+            {%if session%}
+            <h2 class="digital_font">Welcome {{session.first_name}}!</h2>
+            {%endif%}
+        </div>
         {%if session%}
         <div class="header_option_wrapper">
-            <h3>Catch Pokemon</h3>
+            <!-- <h3 class="digital_font">Catch</h3> -->
+            <h3 class="digital_font">Pokemon</h3>
             <a href="/search/pokemon">
                 <img class="header_option" src="{{ url_for('static', filename='assets/pokeball.png')}}">
             </a>
         </div>
         {%endif%}
     </div>
-    {%if session%}
-    <h2>Welcome {{session.first_name}}</h2>
-    {%endif%}
+
     <a href='/'>Home</a>
     <a href="/logout">Log Out</a>
     {% block body %}{% endblock %}

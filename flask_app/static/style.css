@@ -6,8 +6,10 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 25vw;
 }
 .header_option_wrapper>h3{
+    font-size: 1.5vh;
     opacity:0;
     transition: opacity .5s;
 }
@@ -16,22 +18,60 @@ h1{
     opacity:1;
 }
 
-
-
 .header_wrapper{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    max-height: 20vh;
+}
+.header_center>h2{
+    font-size: 2vw;
+}
+.header_center{
+    width:40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .header_logo{
     background-color: white;
-    height:18vh;
+    width: 25vw;
+    max-width: 200px;
 }
 .header_option{
     background-color: white;
-    width:8vh;
+    width:8vw;
+    max-width: 100px;
     transition:width .5s;
 }
 .header_option_wrapper:hover>a>.header_option{
-    width:8.5vh;
+    width:8.5vw;
+}
+
+.login_button_container{
+    display: flex;
+    justify-content: space-around;
+}
+.login_button{
+    height:20vw;
+    width:20vw;
+    background-image:linear-gradient(to bottom left,red,white);
+    border-radius: 50%;
+    border: none;
+    
+    cursor: pointer;
+    font-size: 2vw;
+    box-shadow: none;
+    transition: box-shadow .75s;
+}
+.digital_font{
+    font-family: 'Press Start 2P', cursive;
+}
+
+.login_button:hover{
+    box-shadow: 0 0 20px gray;
+    /* background-image:linear-gradient(to bottom left,white,red); */
+    /* height:21vw;
+    width:21vw; */
 }
