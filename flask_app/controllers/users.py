@@ -11,13 +11,13 @@ def home():
 def create_user():
     if user.User.validate_user(request.form):
         user.User.create_user(request.form)
-        return redirect('/')
+        return redirect('/choice')
     return redirect('/')
 
 @app.route('/login/user', methods=["POST"])
 def login_user():
     if user.User.login_user(request.form):
-        return redirect('/search/pokemon')
+        return redirect('/choice')
     return redirect('/')
 
 @app.route('/search/pokemon')
@@ -28,3 +28,7 @@ def search_page():
 def logout():
     session.clear()
     return redirect('/')
+
+@app.route('/choice')
+def choice_page():
+    return render_template('choice.html')
