@@ -46,7 +46,7 @@ h1{
     transition:width .5s;
 }
 .header_option_wrapper:hover>a>.header_option{
-    width:8.5vw;
+    width:7vw;
 }
 
 .login_button_container{
@@ -70,8 +70,12 @@ h1{
 }
 
 .login_button:hover{
-    box-shadow: 0 0 20px gray;
+    box-shadow:5px -5px 20px gray;
     /* background-image:linear-gradient(to bottom left,white,red); */
     /* height:21vw;
     width:21vw; */
+}
+
+.pokemon_img{
+    width:50vw;
 }
