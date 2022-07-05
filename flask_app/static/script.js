@@ -19,20 +19,29 @@ const SELECTIONS = [
 ]
 
 async function getPokemonData() {
+    // first clearing results from previous pokemon
+    document.getElementById('results').innerHTML=""
     // this is a function for retreiving pokemon name and image from pokemon API
     var response = await fetch("https://pokeapi.co/api/v2/pokemon/");
     var pokemonData = await response.json();
     
     // window.pokemonName=pokemonData.results[randomNum].name;
     var randomNum = getRandomInt(20);
-    document.getElementById("myPokemonName").innerText = pokemonData.results[randomNum].name;
     // below lines are simply capatilizing name of pokmeon
     var name = pokemonData.results[randomNum].name
     var first = name.charAt(0).toUpperCase()
     name = name.slice(1)
     name = first + name
     console.log(name)
-    window.pokemonName=pokemonData.results[randomNum].name;
+    window.pokemonName=name
+    document.getElementById("myPokemonName").innerText = window.pokemonName
+    
+    var name = pokemonData.results[randomNum].name
+    var first = name.charAt(0).toUpperCase()
+    name = name.slice(1)
+    name = first + name
+    console.log(name)
+    window.pokemonName=name
     var imgNum = randomNum + 1
     document.getElementById("myPokemonImg").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
     document.getElementById("selections").style="display:flex"
@@ -90,9 +99,17 @@ function tieFunction(selection,opponentSelection){
     document.getElementById('results').innerHTML=`<p>${window.pokemonName} has chosen ${opponentSelection.name} as well! The battle continues!</p>`
 }
 function winFunction(selection,opponentSelection){
+    document.getElementById('selections').style="display:none"
+    document.getElementById('results').innerHTML=`
+    <h3>You Lost!</h3>
+    <p>You chose ${selection.name}, which is super effective against ${window.pokemonName}'s choice, ${opponentSelection.name}! Great job, let's add them to the Pokedex!</p>`
 
 }
 function loseFunction(selection,opponentSelection){
+    document.getElementById('selections').style="display:none"
+    document.getElementById('results').innerHTML=`
+    <h3>You Lost!</h3>
+    <p>${window.pokemonName} chose ${opponentSelection.name} which is super effective against your ${selection.name}! ${window.pokemonName} got away!</p>`
 
 }
 // function isWinner(selection,opponentSelection){

@@ -91,3 +91,17 @@ h1{
 .selection:hover{
     transform:scale(1.2);
 }
+
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
