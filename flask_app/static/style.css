@@ -79,3 +79,15 @@ h1{
 .pokemon_img{
     width:25vh;
 }
+
+.selection{
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 4rem;
+    transition: 200ms;
+}
+.selection:hover{
+    transform:scale(1.2);
+}

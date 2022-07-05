@@ -1,6 +1,25 @@
-console.log("hello!")
+const selectionButtons = document.querySelectorAll('[data-selection]')
+const SELECTIONS = [
+    // this is a list of dictionaries for each type for the rock paper scissors game
+    {
+        name: 'water',
+        emoji: '💧',
+        beats: 'fire'
+    },
+    {
+        name: 'fire',
+        emoji: '🔥',
+        beats: 'grass'
+    },
+    {
+        name: 'grass',
+        emoji: '🌱',
+        beats: 'water'
+    }
+]
 
 async function getPokemonData() {
+    // this is a function for retreiving pokemon name and image from pokemon API
     var response = await fetch("https://pokeapi.co/api/v2/pokemon/");
     var pokemonData = await response.json();
     console.log(pokemonData);
@@ -11,11 +30,41 @@ async function getPokemonData() {
     document.getElementById("selections").style="display:flex"
     return pokemonData
 }
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+
+selectionButtons.forEach(selectionButton => {
+    selectionButton.addEventListener('click', e => {
+        const selectionName = selectionButton.dataset.selection
+        const selection = SELECTIONS.find(selection => selection.name === selectionName)
+        makeSelection(selection)
+    })
+})
+
+function makeSelection(selection){
+    console.log(selection.emoji)
+    // const computerSelection=randomSelection()
+    // const yourWinner = isWinner(selection,computerSelection)
+    // const computerWinner = isWinner(computerSelection, selection)
+    
+    // addSelectionResult(computerSelection, computerWinner)
+    // addSelectionResult(selection, yourWinner)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// THE BELOW FUNCTIONS ARE FOR CREATING ELEMENTS FOR LOGGING IN
 function returningTrainer() {
     return document.getElementById("login_form").innerHTML = `
     <form action="/login/user" method="post"> 
@@ -24,7 +73,6 @@ function returningTrainer() {
         <input type="submit" name="submit" class="btn btn1" />
     </form>`
 }
-
 function newTrainer() {
     return document.getElementById("login_form").innerHTML = `<form action="/create/user" method="post">
     <Label for="first_name">First Name:<input type="text" name="first_name" required></Label>
