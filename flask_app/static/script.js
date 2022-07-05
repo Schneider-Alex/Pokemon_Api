@@ -22,9 +22,17 @@ async function getPokemonData() {
     // this is a function for retreiving pokemon name and image from pokemon API
     var response = await fetch("https://pokeapi.co/api/v2/pokemon/");
     var pokemonData = await response.json();
-    console.log(pokemonData);
+    
+    // window.pokemonName=pokemonData.results[randomNum].name;
     var randomNum = getRandomInt(20);
     document.getElementById("myPokemonName").innerText = pokemonData.results[randomNum].name;
+    // below lines are simply capatilizing name of pokmeon
+    var name = pokemonData.results[randomNum].name
+    var first = name.charAt(0).toUpperCase()
+    name = name.slice(1)
+    name = first + name
+    console.log(name)
+    window.pokemonName=pokemonData.results[randomNum].name;
     var imgNum = randomNum + 1
     document.getElementById("myPokemonImg").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
     document.getElementById("selections").style="display:flex"
@@ -36,6 +44,7 @@ function getRandomInt(max) {
 
 
 selectionButtons.forEach(selectionButton => {
+    // adding event listener to element buttons on click
     selectionButton.addEventListener('click', e => {
         const selectionName = selectionButton.dataset.selection
         const selection = SELECTIONS.find(selection => selection.name === selectionName)
@@ -44,15 +53,52 @@ selectionButtons.forEach(selectionButton => {
 })
 
 function makeSelection(selection){
-    console.log(selection.emoji)
-    // const computerSelection=randomSelection()
+    // actual game function
+    const computerSelection=randomSelection()
     // const yourWinner = isWinner(selection,computerSelection)
     // const computerWinner = isWinner(computerSelection, selection)
-    
+    console.log(selection.emoji)
+    console.log(computerSelection.emoji)
+    elementResults(selection,computerSelection)
+    // console.log(yourWinner)
     // addSelectionResult(computerSelection, computerWinner)
     // addSelectionResult(selection, yourWinner)
 }
+function randomSelection(){
+    // random selector for computers selection
+    const randomIndex = Math.floor(Math.random() * SELECTIONS.length)
+    return SELECTIONS[randomIndex]
+}
+function elementResults(selection,opponentSelection){
+    if (selection.name===opponentSelection.name){
+        tieFunction(selection,opponentSelection)
+        return console.log('Tie!')
+    } 
+    if (selection.beats === opponentSelection.name){ 
+        winFunction(selection,opponentSelection)
+        return console.log('You Win')
+    }
+    if (selection.name === opponentSelection.beats){ 
+        loseFunction(selection,opponentSelection)
+        return console.log('You Lose')
+    }
+}
 
+function tieFunction(selection,opponentSelection){
+    
+    console.log(window.pokemonName)
+    document.getElementById('results').innerHTML=`<p>${window.pokemonName} has chosen ${opponentSelection.name} as well! The battle continues!</p>`
+}
+function winFunction(selection,opponentSelection){
+
+}
+function loseFunction(selection,opponentSelection){
+
+}
+// function isWinner(selection,opponentSelection){
+//     // determing if user or computer won game
+//     return selection.beats === opponentSelection.name
+// }
 
 
 
