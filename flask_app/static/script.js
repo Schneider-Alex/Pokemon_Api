@@ -8,6 +8,7 @@ async function getPokemonData() {
     document.getElementById("myPokemonName").innerText = pokemonData.results[randomNum].name;
     var imgNum = randomNum + 1
     document.getElementById("myPokemonImg").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
+    document.getElementById("selections").style="display:flex"
     return pokemonData
 }
 
@@ -16,7 +17,6 @@ function getRandomInt(max) {
 }
 
 function returningTrainer() {
-
     return document.getElementById("login_form").innerHTML = `
     <form action="/login/user" method="post"> 
         <Label for="email">Email adress:<input type="text" name="email" placeholder="emailed@e.com" required></Label>
