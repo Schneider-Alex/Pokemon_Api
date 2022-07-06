@@ -11,6 +11,8 @@ def home():
 def create_user():
     if user.User.validate_user(request.form):
         user.User.create_user(request.form)
+        user.User.login_user(request.form)
+        print(session)
         return redirect('/choice')
     return redirect('/')
 

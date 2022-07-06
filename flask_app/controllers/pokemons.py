@@ -4,7 +4,6 @@ from flask_app.models import pokemon
 
 @app.route('/pokedex/new/pokemon',methods=['POST'])
 def add_pokemon_to_pokedex():
-    print(request.form)
-    print('Pokemon Added')
+    pokemon.Pokemon.validate_new_pokemon(request.form)
     return redirect('/search/pokemon')
 

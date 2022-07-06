@@ -25,11 +25,11 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
-    @staticmethod
-    def validate_user(form):
+    @classmethod
+    def validate_user(cls,form):
         is_valid = True
         query = """SELECT * FROM users WHERE email =  %(email)s"""
-        results = connectToMySQL('exercise').query_db(query, form)
+        results = connectToMySQL(cls.db).query_db(query, form)
         if results:
             flash("email address already in use!")
             is_valid = False
@@ -66,7 +66,6 @@ class User:
 
     @classmethod
     def login_user(cls,data):
-        print('******* LOGIN USER RUNNING')
         print(data)
         user = User.get_user_by_email(data)
         if user:
