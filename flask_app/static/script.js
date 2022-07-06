@@ -138,19 +138,21 @@ function loseFunction(selection,opponentSelection){
 // THE BELOW FUNCTIONS ARE FOR CREATING ELEMENTS FOR LOGGING IN
 function returningTrainer() {
     return document.getElementById("login_form").innerHTML = `
-    <form action="/login/user" method="post"> 
-        <Label for="email">Email adress:<input type="text" name="email" placeholder="emailed@e.com" required></Label>
-        <Label for="password">Password:<input type="password" name="password" placeholder="Password1?" required></Label>
-        <input type="submit" name="submit" class="btn btn1" />
+    <form action="/login/user" method="post">
+        <label for="name_field">Email:</label>
+        <input type="text" id="name_field" class="nes-input" required name="email" placeholder="emailed@e.com">
+        <label for="name_field">Password:</label>
+        <input type="password" id="name_field" class="nes-input" name="password" placeholder="Password1?" required>
+        <input type="submit" name="submit" class="btn btn1" value="Login" />
     </form>`
 }
 function newTrainer() {
     return document.getElementById("login_form").innerHTML = `<form action="/create/user" method="post">
-    <Label for="first_name">First Name:<input type="text" name="first_name" required></Label>
-    <Label for="last_name">Last Name:<input type="text" name="last_name" required></Label>
-    <Label for="email">Email adress:<input type="text" name="email" required></Label>
-    <Label for="password">Password:<input type="password" name="password" required></Label>
-    <Label for="passwordcheck">Confirm Password:<input type="password" name="passwordcheck" required></Label>
+    <Label for="first_name">First Name:<input class="nes-input" type="text" name="first_name" required></Label>
+    <Label for="last_name">Last Name:<input class="nes-input" type="text" name="last_name" required></Label>
+    <Label for="email">Email adress:<input class="nes-input" type="text" name="email" required></Label>
+    <Label for="password">Password:<input class="nes-input" type="password" name="password" required></Label>
+    <Label for="passwordcheck">Confirm Password:<input class="nes-input" type="password" name="passwordcheck" required></Label>
     <input type="submit"value="Create User">
 </form>`
 }
