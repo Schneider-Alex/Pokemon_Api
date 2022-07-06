@@ -101,8 +101,13 @@ function tieFunction(selection,opponentSelection){
 function winFunction(selection,opponentSelection){
     document.getElementById('selections').style="display:none"
     document.getElementById('results').innerHTML=`
-    <h3>You Lost!</h3>
+    <h3>You won!</h3>
     <p>You chose ${selection.name}, which is super effective against ${window.pokemonName}'s choice, ${opponentSelection.name}! Great job, let's add them to the Pokedex!</p>`
+    document.getElementById('new_pokemon_form').innerHTML=`<form action="/pokedex/new/pokemon" method="post">
+    <Label for="name">Name your ${window.pokemonName}<input type="text" name="personal_name" minlength="2" required></Label>
+    <input type="hidden" name="pokemon_name" value="${window.pokemonName}">
+    <input type="submit" value="Add to Pokedex">
+</form>`
 
 }
 function loseFunction(selection,opponentSelection){
