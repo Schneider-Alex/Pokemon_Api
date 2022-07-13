@@ -9,6 +9,11 @@ def add_pokemon_to_pokedex():
 
 @app.route('/pokedex/display', methods=["POST"])
 def pokedex_selection():
-    print("pokedex  choice")
-    print(request.form)
+    if request.form['answer'] == 'my':
+        pokemon.Pokemon.get_my_pokemon()
+        print("my")
+    if request.form['answer'] == 'all':
+        pokemon.Pokemon.get_all_pokemon()
+        print("all")
+
     return redirect("/pokedex")

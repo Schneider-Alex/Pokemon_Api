@@ -35,13 +35,6 @@ async function getPokemonData() {
     console.log(name)
     window.pokemonName=name
     document.getElementById("myPokemonName").innerText = window.pokemonName
-    
-    var name = pokemonData.results[randomNum].name
-    var first = name.charAt(0).toUpperCase()
-    name = name.slice(1)
-    name = first + name
-    console.log(name)
-    window.pokemonName=name
     var imgNum = randomNum + 1
     document.getElementById("myPokemonImg").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
     document.getElementById("selections").style="display:flex"
