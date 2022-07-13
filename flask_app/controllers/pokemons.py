@@ -10,10 +10,10 @@ def add_pokemon_to_pokedex():
 @app.route('/pokedex/display', methods=["POST"])
 def pokedex_selection():
     if request.form['answer'] == 'my':
-        pokemon.Pokemon.get_my_pokemon()
+        pokemon_list=pokemon.Pokemon.get_my_pokemon()
         print("my")
     if request.form['answer'] == 'all':
-        pokemon.Pokemon.get_all_pokemon()
+        pokemon_list=pokemon.Pokemon.get_all_pokemon()
         print("all")
-
-    return redirect("/pokedex")
+    print(pokemon_list)
+    return render_template("pokedex.html", pokemon_list=pokemon_list)

@@ -58,21 +58,22 @@ class Pokemon:
     @classmethod
     def get_all_pokemon(cls):
         query="""
-        SELECT name FROM pokemons
+        SELECT name, api_index FROM pokemons
         """
         results = connectToMySQL(cls.db).query_db(query)
         if len(results) < 1:
+            flash('No Pokemon Caught Yet!')
             return []
         print(results)
-        return [0]
+        return results
 
     @classmethod
     def get_my_pokemon(cls):
-        query="""
-        SELECT name FROM pokemons
-        """
-        results = connectToMySQL(cls.db).query_db(query)
-        if len(results) < 1:
-            return []
-        print(results)
+        # query="""
+        # SELECT name FROM pokemons
+        # """
+        # results = connectToMySQL(cls.db).query_db(query)
+        # if len(results) < 1:
+        #     return []
+        # print(results)
         return [0]
