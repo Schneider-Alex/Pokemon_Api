@@ -1,3 +1,14 @@
 {%extends "layout.html"%}{%block body%}
-    <h1>Pokedex Page!</h1>
-    {% endblock %}
+<h1>Pokedex Page!</h1>
+<form class="pokedex_form" action="/pokedex/display" method="post">
+    <label>
+        <input class="nes-radio" type="radio" name="answer" value="my">
+        <span>My Pokemon</span>
+    </label>
+    <label>
+        <input class="nes-radio" type="radio" name="answer" value="all">
+        <span>All Pokemon</span>
+    </label>
+    <input class="nes-btn" type="submit" value="Go!">
+</form>
+{% endblock %}
