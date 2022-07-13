@@ -19,6 +19,7 @@ class Pokemon:
         data={
             'pokemon_name' : form['pokemon_name'],
             'personal_name': form['personal_name'],
+            'api_index' : form['api_index'],
             'user_id' : session['user_id']
         }
         query = """SELECT * FROM pokemons WHERE name =  %(pokemon_name)s"""
@@ -36,7 +37,7 @@ class Pokemon:
     @classmethod
     def first_catch_ever(cls,data):
         query="""
-            INSERT INTO pokemons (name) VALUES (%(pokemon_name)s)
+            INSERT INTO pokemons (name, api_index) VALUES (%(pokemon_name)s, %(api_index)s)
             """
         pokemon_id=connectToMySQL(cls.db).query_db(query, data)
         if pokemon_id:

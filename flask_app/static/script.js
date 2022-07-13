@@ -34,6 +34,7 @@ async function getPokemonData() {
     name = first + name
     console.log(name)
     window.pokemonName=name
+    window.pokemonApiIndex=randomNum
     document.getElementById("myPokemonName").innerText = window.pokemonName
     var imgNum = randomNum + 1
     document.getElementById("myPokemonImg").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imgNum}.png`
@@ -102,6 +103,7 @@ function winFunction(selection,opponentSelection){
     document.getElementById('new_pokemon_form').innerHTML=`<form action="/pokedex/new/pokemon" method="post">
     <Label for="name">Name your ${window.pokemonName}<input type="text" name="personal_name" minlength="2" required></Label>
     <input type="hidden" name="pokemon_name" value="${window.pokemonName}">
+    <input type="hidden" name="api_index" value="${window.pokemonApiIndex}"/>
     <input type="submit" value="Add to Pokedex">
 </form>`
 
