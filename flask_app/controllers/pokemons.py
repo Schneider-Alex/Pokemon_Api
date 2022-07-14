@@ -9,6 +9,7 @@ def add_pokemon_to_pokedex():
 
 @app.route('/pokedex/display', methods=["POST"])
 def pokedex_selection():
+    # may end up deleting this entire function, trying on this branch
     if request.form['answer'] == 'my':
         pokemon_list=pokemon.Pokemon.get_my_pokemon()
         print("my")

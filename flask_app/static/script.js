@@ -151,3 +151,11 @@ function newTrainer() {
     <input type="submit"value="Create User">
 </form>`
 }
+
+function loadPokemon(){
+    var api_number=document.getElementById('api_number').innerText;
+    img_number=parseInt(api_number)+1
+    
+    document.getElementById('pokedexPokemonImg').src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${img_number}.png`
+    return
+}

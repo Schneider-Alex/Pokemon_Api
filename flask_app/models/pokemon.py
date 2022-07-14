@@ -58,7 +58,10 @@ class Pokemon:
     @classmethod
     def get_all_pokemon(cls):
         query="""
-        SELECT name, api_index FROM pokemons
+        SELECT id, name, api_index,caught.user_id FROM pokemons
+        JOIN caught ON pokemon_id = pokemons.id
+        GROUP BY caught.pokemon_id
+        ORDER BY pokemons.api_index;
         """
         results = connectToMySQL(cls.db).query_db(query)
         if len(results) < 1:
