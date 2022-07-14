@@ -14,5 +14,12 @@
 
 {%if pokemon_list%}
 {{pokemon_list}}
+<!-- {%for pokemon in pokemon_list%}
+<p>{{pokemon.api_index}}</p>
+{%endfor%} -->
+<p id="api_number">{{pokemon_list[0].api_index}}</p>
+<button>Left</button>
+<button>Load Pokemon</button>
+<button>Right</button>
 {%endif%}
 {% endblock %}
