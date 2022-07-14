@@ -93,7 +93,7 @@ function tieFunction(selection,opponentSelection){
     document.getElementById('results').innerHTML=`<p>${window.pokemonName} has chosen ${opponentSelection.name} as well! The battle continues!</p>`
 }
 function winFunction(selection,opponentSelection){
-
+    document.getElementById('getPokemonButton').remove();
     document.getElementById('selections').style="display:none"
     document.getElementById('results').innerHTML=`
     <h3>You won!</h3>
