@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash, url_for, jsonify
-from flask_app.models import user
+from flask_app.models import user, pokemon
+import random
 
 
 @app.route('/')
@@ -37,4 +38,7 @@ def choice_page():
 
 @app.route('/pokedex')
 def  pokedex_page():
-    return  render_template('pokedex.html')
+    pokemon_list=pokemon.Pokemon.get_all_pokemon()
+    number=0
+    # random.randint(0,len(pokemon_list))
+    return  render_template('pokedex.html',pokemon_list=pokemon_list, number=number)

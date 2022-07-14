@@ -12,14 +12,16 @@
     <input class="nes-btn" type="submit" value="Go!">
 </form>
 
+
+<p id="pokedexPokemonName"></p>
+
+
 {%if pokemon_list%}
-{{pokemon_list}}
-<!-- {%for pokemon in pokemon_list%}
-<p>{{pokemon.api_index}}</p>
-{%endfor%} -->
-<p id="api_number">{{pokemon_list[0].api_index}}</p>
+<p>{{pokemon_list[number].name}}</p>
+<img class="pokemon_img" id="pokedexPokemonImg" src=""></img>
+<p id="api_number">{{pokemon_list[number].api_index}}</p>
 <button>Left</button>
-<button>Load Pokemon</button>
+<button onclick=loadPokemon()>Load Pokemon</button>
 <button>Right</button>
 {%endif%}
 {% endblock %}
