@@ -1,3 +1,8 @@
+var allPokemon=[]
+for (let i=0; i<=20;i++){
+    allPokemon.push(i)
+}
+console.log(allPokemon)
 const selectionButtons = document.querySelectorAll('[data-selection]')
 const SELECTIONS = [
     // this is a list of dictionaries for each type for the rock paper scissors game
